@@ -1,0 +1,7 @@
+export * from './Logo'
+export * from './Apple'
+export * from './Facebook'
+export * from './Instagram'
+export * from './Youtube'
+export * from './Spotify'
+export * from './SoundCloud'
