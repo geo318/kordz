@@ -1,4 +1,4 @@
 export type Props<T> = {
-  handleSubmit: (data: T) => Promise<void>
+  handleSubmit: (data: FormData) => Promise<void>
   defaultValues?: Partial<T>
 }
