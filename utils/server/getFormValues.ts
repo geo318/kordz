@@ -9,7 +9,7 @@ export const getFormValues = <
   >
 
   const mappedEntries = {} as TObj
-  let file: Blob | undefined = undefined
+  let file: Blob | undefined
 
   for (const [key, val] of formDataEntries) {
     if (key === 'thumbnail') {

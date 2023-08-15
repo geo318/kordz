@@ -7,8 +7,12 @@ export const musicSchema = z.object({
   url: z.string().url(),
 })
 
-export const musicSchemaApi = musicSchema.extend({
-  id: z.string(),
-  createdAt: z.coerce.date(),
-  updatedAt: z.coerce.date(),
-})
+export const musicSchemaApi = z.array(
+  z.object({
+    id: z.coerce.number(),
+    title: z.string(),
+    thumbnail: z.string(),
+    createdAt: z.coerce.date(),
+    updatedAt: z.coerce.date(),
+  })
+)

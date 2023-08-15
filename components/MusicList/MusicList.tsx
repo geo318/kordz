@@ -1,31 +1,30 @@
 'use client'
 
-import { Music } from '@/types'
+import { MusicApi } from '@/types'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useMusicList } from './useMusicList'
+import { Spinner } from '..'
 
-export const MusicList: React.FC<{ musicListPromise: Promise<Music[]> }> = ({
+export const MusicList: React.FC<{ musicListPromise: Promise<MusicApi> }> = ({
   musicListPromise,
 }) => {
-  const [musicList, setMusicList] = useState<Music[]>([])
-  useEffect(() => {
-    ;(async () => {
-      const musicData = await musicListPromise
+  const { musicList, isLoading } = useMusicList(musicListPromise)
 
-      setMusicList(musicData)
-    })()
-  }, [])
   return (
     <div>
       <h1>Music List</h1>
       <div>
-        {musicList.map((music, i) => (
-          <div key={i}>
-            {/* {music.title} */}
-            {music.thumbnail}
-            <Image src={`http://localhost:3000/${music.thumbnail}`} alt='' width={500} height={500} />
-          </div>
-        ))}
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          musicList.map((music, i) => (
+            <div key={i}>
+              {music.title}
+              {music.thumbnail}
+              <Image src={music.thumbnail} alt='' width={500} height={500} />
+            </div>
+          ))
+        )}
       </div>
     </div>
   )
