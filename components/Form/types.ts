@@ -8,4 +8,5 @@ export type FormProps = {
   onSubmit?: FormSubmitFunction<any>
   buttonLabel?: string
   className?: string
+  revalidate?: () => void
 }

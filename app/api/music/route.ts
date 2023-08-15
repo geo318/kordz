@@ -24,7 +24,7 @@ export const POST = async (req: Request, res: NextApiResponse) => {
 
   try {
     const { path } = await writeFile(file)
-    console.log(path, mapped)
+
     await prisma.music.create({
       data: {
         ...mapped,

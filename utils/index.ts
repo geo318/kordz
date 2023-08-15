@@ -1,5 +1,3 @@
 export * from './formData'
 export * from './server'
 export * from './general'
-// export * from './resize'
-// export * from './uploadFile'

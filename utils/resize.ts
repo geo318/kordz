@@ -1,3 +1,5 @@
+'use server'
+
 import sharp, { AvailableFormatInfo, FormatEnum } from 'sharp'
 import path from 'path'
 import fs from 'fs'

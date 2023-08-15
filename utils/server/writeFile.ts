@@ -1,13 +1,14 @@
 'use server'
 
-import fs from 'fs'
-// import { generateFileName } from '@/utils'
+import { generateFileName } from '@/utils'
+import sharp from 'sharp'
 
 export const writeFile = async (file: Blob) => {
   const buffer = Buffer.from(await file.arrayBuffer())
-  const path = `/images/${file.name}`
 
-  fs.writeFileSync(path, buffer)
+  const filePath = `/images/${generateFileName(file.name)}`
 
-  return { path }
+  sharp(buffer).resize(800, 800, { fit: 'cover' }).toFile(`public${filePath}`)
+
+  return { path: filePath }
 }
