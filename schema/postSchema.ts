@@ -22,7 +22,7 @@ export const postSchemaBase = ({ partial = false }) =>
         new Date().getFullYear(),
         `shouldn't be more then ${new Date().getFullYear()}`
       ),
-    img: partial ? z.instanceof(FileList) : imgSchema,
+    img: partial ? z.any() : imgSchema,
   })
 
 export const uploadSchemaPartial = postSchemaBase({

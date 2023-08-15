@@ -1,17 +1,14 @@
+import { Music } from '@/types'
+import { getFormValues, writeFile } from '@/utils'
 import { PrismaClient } from '@prisma/client'
+import { NextApiResponse } from 'next'
 
 const prisma = new PrismaClient()
 
 export const GET = async () => {
   try {
-    const music = await prisma.music.create({
-      data: {
-        thumbnail: 'https://i.ytimg.com/vi/5qap5aO4i9A/maxresdefault.jpg',
-        title: 'Test',
-        url: 'https://www.youtube.com/watch?v=5qap5aO4i9A',
-      },
-    })
-    return new Response(JSON.stringify(music))
+    const musicList = await prisma.music.findMany()
+    return new Response(JSON.stringify(musicList))
   } catch (e) {
     process.exit(1)
   } finally {
@@ -19,16 +16,26 @@ export const GET = async () => {
   }
 }
 
-export const POST = async (req: Request, res: Response) => {
+export const POST = async (req: Request, res: NextApiResponse) => {
   const formData = await req.formData()
-  const formDataEntries = Array.from(formData.entries())
-  const mapped = formDataEntries.reduce(
-    (acc: Record<string, string | Blob>, [name, value]) => {
-      acc[name] = value
-      return acc
-    },
-    {}
-  )
-  console.log(mapped,formData)
+  const [mapped, file] = getFormValues<Music, 'thumbnail'>(formData)
+
+  if (!file) return new Response('file not uploaded')
+
+  try {
+    const { path } = await writeFile(file)
+    console.log(path, mapped)
+    await prisma.music.create({
+      data: {
+        ...mapped,
+        thumbnail: path,
+      },
+    })
+  } catch (e) {
+    process.exit(1)
+  } finally {
+    await prisma.$disconnect()
+  }
+
   return new Response(JSON.stringify(mapped))
 }
