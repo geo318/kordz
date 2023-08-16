@@ -1,3 +1,3 @@
-export * from './postSchema'
+export * from './eventSchema'
 export * from './loginSchema'
 export * from './musicSchema'

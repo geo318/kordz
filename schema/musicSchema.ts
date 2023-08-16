@@ -4,7 +4,7 @@ import { imgSchema } from './shared'
 export const musicSchema = z.object({
   title: z.string(),
   thumbnail: imgSchema,
-  url: z.string().url(),
+  url: z.string().url('link should start with https://'),
 })
 
 export const musicSchemaApi = z.array(

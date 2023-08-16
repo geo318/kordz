@@ -1,9 +1,9 @@
 'use client'
 
 import { FormWrapper, Input } from '@/components'
-import { musicSchema as schema } from '@/schema'
+import { eventSchema as schema } from '@/schema'
 import { Props } from './types'
-import { Music } from '@/types/general'
+import { Music } from '@/types'
 
 export function UploadForm({
   handleSubmit,
@@ -18,9 +18,14 @@ export function UploadForm({
       className='bg-white'
       revalidate={revalidate}
     >
-      <Input name='title' placeholder='name of a painting' label='Title' />
-      <Input name='thumbnail' type='file' label='Image - max 5MB' />
-      <Input name='url' placeholder='year of creation' label='Link' />
+      <Input name='location' placeholder='Event place' />
+      <Input name='description' placeholder='Event details' />
+      <Input
+        name='url'
+        placeholder='https://example.com/some-url'
+        label='Link'
+      />
+      <Input name='date' label='Date' type='date' />
     </FormWrapper>
   )
 }
