@@ -3,13 +3,15 @@
 import React from 'react'
 import { useFormContext } from 'react-hook-form'
 
-export const Input: React.FC<{
-  name: string
-  type?: string
-  placeholder?: string
-  label?: string
-  noLabel?: boolean
-}> = ({ name, type, placeholder, label, noLabel }) => {
+export const Input: React.FC<
+  JSX.IntrinsicElements['input'] & {
+    name: string
+    type?: string
+    placeholder?: string
+    label?: string
+    noLabel?: boolean
+  }
+> = ({ name, type, placeholder, label, noLabel, ...props }) => {
   const {
     register,
     formState: { errors },
@@ -28,6 +30,7 @@ export const Input: React.FC<{
         {...register(name)}
         placeholder={placeholder}
         id={name}
+        {...props}
       />
       <div className='text-red-600 text-xs mb-3 pl-2'>
         {name in errors && <span>{`${errors?.[name]?.message}`}</span>}

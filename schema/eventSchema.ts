@@ -1,6 +1,6 @@
 import z from 'zod'
 
-export const postSchema = z.object({
+export const eventSchema = z.object({
   location: z
     .string()
     .nonempty('location name is empty')
@@ -10,11 +10,12 @@ export const postSchema = z.object({
     .string()
     .nonempty('shouldn`t be empty')
     .min(1, 'description is too short')
-    .max(100, 'description is too long'),
+    .max(200, 'description is too long'),
   date: z.coerce.date(),
+  url: z.string().url('link should start with https://'),
 })
 
-export const postSchemaApi = postSchema.extend({
+export const postSchemaApi = eventSchema.extend({
   id: z.coerce.number(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),

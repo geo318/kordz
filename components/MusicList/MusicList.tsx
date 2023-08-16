@@ -11,21 +11,27 @@ export const MusicList: React.FC<{ musicListPromise: Promise<MusicApi> }> = ({
   const { musicList, isLoading } = useMusicList(musicListPromise)
 
   return (
-    <div>
-      <h1>Music List</h1>
-      <div>
+    <main>
+      <div className='grid grid-cols-12 gap-5'>
         {isLoading ? (
           <Spinner />
         ) : (
           musicList.map((music, i) => (
-            <div key={i}>
-              {music.title}
-              {music.thumbnail}
-              <Image src={music.thumbnail} alt='' width={500} height={500} />
+            <div
+              key={music.id}
+              className='max-w-sm rounded overflow-hidden shadow-sm border border-zinc-200 col-span-3'
+            >
+              <div className='w-full aspect-square overflow-hidden object-contain flex items-center justify-center'>
+                <Image src={music.thumbnail} alt='' width={300} height={300} />
+              </div>
+
+              <div className='px-6 py-4'>
+                <h4 className='font-bold text-xl mb-2'>{music.title}</h4>
+              </div>
             </div>
           ))
         )}
       </div>
-    </div>
+    </main>
   )
 }

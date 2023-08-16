@@ -1,14 +1,19 @@
-import { MusicList, Spinner, UploadMusic } from '@/components'
-import { useAdmin } from '@/hooks/useAdmin'
+import { Nav, UploadMusic, UploadEvent, SwitchForms } from '@/components'
 
 export default function Admin() {
-  const { musicList } = useAdmin()
-
   return (
     <div>
-      <h1 className='py-10 text-xl font-semibold'>Upload new track info</h1>
-      <MusicList musicListPromise={musicList} />
-      <UploadMusic />
+      <div className='relative'>
+        <h1 className='pb-10 text-xl font-semibold text-center'>
+          Upload new track info
+        </h1>
+        <div className='absolute right-0 top-0'>
+          <Nav />
+        </div>
+      </div>
+      <div className='flex'>
+        <SwitchForms />
+      </div>
     </div>
   )
 }

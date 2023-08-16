@@ -3,7 +3,5 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  return (
-    <div className='text-black bg-white p-20 max-w-2xl mx-auto'>{children}</div>
-  )
+  return <main className='text-black bg-white p-20 mx-auto'>{children}</main>
 }
