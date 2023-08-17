@@ -3,13 +3,13 @@
 import { FormWrapper, Input } from '@/components'
 import { eventSchema as schema } from '@/schema'
 import { Props } from './types'
-import { Music } from '@/types'
+import { Event } from '@/types'
 
-export function UploadForm({
+export function UploadEventForm({
   handleSubmit,
   defaultValues,
   revalidate,
-}: Props<Music> & { edit?: boolean }): JSX.Element {
+}: Props<Event> & { edit?: boolean }): JSX.Element {
   return (
     <FormWrapper
       schema={schema}

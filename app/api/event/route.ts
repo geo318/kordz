@@ -1,14 +1,15 @@
-import { Music } from '@/types'
-import { getFormValues, writeFile } from '@/utils'
+import { EventApi } from '@/types'
+import { getFormValues } from '@/utils'
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
 export const GET = async () => {
   try {
-    const musicList = await prisma.music.findMany()
-    return new Response(JSON.stringify(musicList))
+    const musicList = await prisma.event.findMany()
+    return new Response(JSON.stringify(musicList), { status: 200 })
   } catch (e) {
+    console.log(e)
     process.exit(1)
   } finally {
     await prisma.$disconnect()
@@ -17,28 +18,23 @@ export const GET = async () => {
 
 export const POST = async (req: Request) => {
   const formData = await req.formData()
-  const [mapped, file] = getFormValues<Music>(formData)
-
-  if (!file) return new Response('file not uploaded')
+  const [mapped] = getFormValues<EventApi>(formData)
 
   try {
-    const { path } = await writeFile(file)
-
-    await prisma.music.create({
+    await prisma.event.create({
       data: {
         ...mapped,
-        thumbnail: path,
       },
     })
   } catch (e) {
+    console.log(e)
     process.exit(1)
   } finally {
     await prisma.$disconnect()
   }
 
-  return new Response(JSON.stringify(mapped))
+  return new Response('updated', { status: 201 })
 }
-
 
 export const PATCH = async (req: Request) => {
   const { searchParams } = new URL(req.url)
@@ -46,7 +42,7 @@ export const PATCH = async (req: Request) => {
   const formData = await req.formData()
 
   try {
-    await prisma.music.update({
+    await prisma.event.update({
       where: {
         id: Number(id),
       },
@@ -67,7 +63,7 @@ export const DELETE = async (req: Request) => {
   const id = searchParams.get('id')
 
   try {
-    await prisma.music.delete({
+    await prisma.event.delete({
       where: {
         id: Number(id),
       },

@@ -1,4 +1,4 @@
-import { MusicList, Nav, UploadMusic } from '@/components'
+import { MusicList, Nav } from '@/components'
 import { useAdmin } from '@/hooks/useAdmin'
 import Link from 'next/link'
 
@@ -19,7 +19,7 @@ export default function Admin() {
         </div>
       </nav>
 
-      <MusicList musicListPromise={musicList} />
+      <MusicList musicListPromise={musicList()} />
     </div>
   )
 }

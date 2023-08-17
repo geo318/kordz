@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { Flash } from '.'
 
 export const useFlashMessage = (
   errorMessage = 'Something went wrong...',
@@ -18,5 +19,12 @@ export const useFlashMessage = (
     setIsFlashActive(true)
   }
 
-  return { isFlashActive, setIsFlashActive, flashMessage, handleFlashMessage }
+  const FlashMessage = () => (
+    <Flash
+      flashInfo={flashMessage!}
+      isActive={isFlashActive}
+      setIsActive={setIsFlashActive}
+    />
+  )
+  return { FlashMessage, handleFlashMessage }
 }

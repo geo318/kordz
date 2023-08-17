@@ -5,7 +5,7 @@ import { musicSchema as schema } from '@/schema'
 import { Props } from './types'
 import { Music } from '@/types/general'
 
-export function UploadForm({
+export function UploadMusicForm({
   handleSubmit,
   defaultValues,
   revalidate,

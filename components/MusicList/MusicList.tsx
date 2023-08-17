@@ -4,14 +4,23 @@ import { MusicApi } from '@/types'
 import Image from 'next/image'
 import { useMusicList } from './useMusicList'
 import { Spinner } from '..'
+import { useState } from 'react'
+import { MusicModal } from '@/components'
 
 export const MusicList: React.FC<{ musicListPromise: Promise<MusicApi> }> = ({
   musicListPromise,
 }) => {
-  const { musicList, isLoading } = useMusicList(musicListPromise)
+  const { musicList, isLoading, activeMusic, setActiveMusic } =
+    useMusicList(musicListPromise)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
     <main>
+      <MusicModal
+        defaults={activeMusic}
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+      />
       <div className='grid grid-cols-12 gap-5'>
         {isLoading ? (
           <Spinner />
@@ -20,6 +29,10 @@ export const MusicList: React.FC<{ musicListPromise: Promise<MusicApi> }> = ({
             <div
               key={music.id}
               className='max-w-sm rounded overflow-hidden shadow-sm border border-zinc-200 col-span-3'
+              onClick={() => {
+                setActiveMusic(music)
+                setIsModalOpen((prev) => !prev)
+              }}
             >
               <div className='w-full aspect-square overflow-hidden object-contain flex items-center justify-center'>
                 <Image src={music.thumbnail} alt='' width={300} height={300} />

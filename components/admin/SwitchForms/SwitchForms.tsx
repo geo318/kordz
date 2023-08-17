@@ -4,7 +4,7 @@ import { UploadEvent, UploadMusic } from '@/components'
 import { useSwitchForms } from './useSwitchForms'
 import { twMerge } from 'tailwind-merge'
 
-export const SwitchForms = () => {
+export function SwitchForms() {
   const { activeForm, toggleForm } = useSwitchForms()
   return (
     <section className='grow max-w-sm mx-auto'>
@@ -13,7 +13,8 @@ export const SwitchForms = () => {
           onClick={toggleForm('music')}
           className={twMerge(
             'cursor-pointer hover:text-black',
-            activeForm === 'music' && 'text-black font-semibold border-b-2 border-app-blue'
+            activeForm === 'music' &&
+              'text-black font-semibold border-b-2 border-app-blue'
           )}
         >
           Add Music
@@ -22,7 +23,8 @@ export const SwitchForms = () => {
           onClick={toggleForm('event')}
           className={twMerge(
             'cursor-pointer hover:text-black',
-            activeForm === 'event' && 'text-black font-semibold border-b-2 border-app-blue'
+            activeForm === 'event' &&
+              'text-black font-semibold border-b-2 border-app-blue'
           )}
         >
           Add Event
