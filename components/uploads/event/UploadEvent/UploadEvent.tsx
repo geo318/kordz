@@ -1,18 +1,18 @@
 'use client'
 
 import { Spinner } from '@/components'
-import { useUploadMusic } from './useUploadEvent'
-import { revalidateMusicData } from '@/actions'
-import { UploadForm } from '../UploadForm'
+import { useUploadEvent } from './useUploadEvent'
+import { revalidateEventData } from '@/actions'
+import { UploadEventForm } from '../UploadForm'
 
 export function UploadEvent() {
-  const { isLoading, handleSubmit } = useUploadMusic()
+  const { isLoading, handleSubmit } = useUploadEvent()
   return (
     <>
       {!isLoading ? (
-        <UploadForm
+        <UploadEventForm
           handleSubmit={handleSubmit}
-          revalidate={revalidateMusicData}
+          revalidate={revalidateEventData}
         />
       ) : (
         <Spinner />

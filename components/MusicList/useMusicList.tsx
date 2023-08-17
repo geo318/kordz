@@ -5,6 +5,9 @@ import { MusicApi } from '@/types'
 export const useMusicList = (musicListPromise: Promise<MusicApi>) => {
   const [musicList, setMusicList] = useState<MusicApi>([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [activeMusic, setActiveMusic] = useState<MusicApi[number]>(
+    {} as MusicApi[number]
+  )
 
   useEffect(() => {
     setIsLoading(true)
@@ -21,5 +24,5 @@ export const useMusicList = (musicListPromise: Promise<MusicApi>) => {
     })()
   }, [musicListPromise])
 
-  return { musicList, isLoading }
+  return { musicList, isLoading, activeMusic, setActiveMusic }
 }

@@ -1,4 +1,4 @@
-import { Nav, UploadMusic, UploadEvent, SwitchForms } from '@/components'
+import { Nav, SwitchForms } from '@/components'
 
 export default function Admin() {
   return (

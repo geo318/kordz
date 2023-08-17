@@ -1,9 +1,9 @@
-import { MusicList, Nav, UploadMusic } from '@/components'
+import { EventList, Nav } from '@/components'
 import { useAdmin } from '@/hooks/useAdmin'
 import Link from 'next/link'
 
 export default function Admin() {
-  const { musicList } = useAdmin()
+  const { eventList } = useAdmin()
 
   return (
     <div>
@@ -19,7 +19,7 @@ export default function Admin() {
         </div>
       </nav>
 
-      <MusicList musicListPromise={musicList} />
+      <EventList eventListPromise={eventList()} />
     </div>
   )
 }

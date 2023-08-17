@@ -15,8 +15,11 @@ export const eventSchema = z.object({
   url: z.string().url('link should start with https://'),
 })
 
-export const postSchemaApi = eventSchema.extend({
-  id: z.coerce.number(),
-  createdAt: z.coerce.date(),
-  updatedAt: z.coerce.date(),
-})
+export const eventSchemaApi = z.array(
+  eventSchema.extend({
+    id: z.coerce.number(),
+    date: z.string(),
+    createdAt: z.coerce.date(),
+    updatedAt: z.coerce.date(),
+  })
+)
