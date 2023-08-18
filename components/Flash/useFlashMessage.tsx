@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { Flash } from '.'
 
 export const useFlashMessage = (
@@ -13,11 +13,14 @@ export const useFlashMessage = (
     error: boolean
   }>()
 
-  const handleFlashMessage = (error = false) => {
-    const message = error ? errorMessage : successMessage
-    setFlashMessage({ message, error })
-    setIsFlashActive(true)
-  }
+  const handleFlashMessage = useCallback(
+    (error = false) => {
+      const message = error ? errorMessage : successMessage
+      setFlashMessage({ message, error })
+      setIsFlashActive(true)
+    },
+    [errorMessage, successMessage]
+  )
 
   const FlashMessage = () => (
     <Flash

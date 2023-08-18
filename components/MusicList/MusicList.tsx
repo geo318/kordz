@@ -4,18 +4,24 @@ import { MusicApi } from '@/types'
 import Image from 'next/image'
 import { useMusicList } from './useMusicList'
 import { Spinner } from '..'
-import { useState } from 'react'
 import { MusicModal } from '@/components'
 
 export const MusicList: React.FC<{ musicListPromise: Promise<MusicApi> }> = ({
   musicListPromise,
 }) => {
-  const { musicList, isLoading, activeMusic, setActiveMusic } =
-    useMusicList(musicListPromise)
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const {
+    musicList,
+    isLoading,
+    activeMusic,
+    setActiveMusic,
+    isModalOpen,
+    setIsModalOpen,
+    FlashMessage,
+  } = useMusicList(musicListPromise)
 
   return (
     <main>
+      <FlashMessage />
       <MusicModal
         defaults={activeMusic}
         isModalOpen={isModalOpen}
@@ -25,7 +31,7 @@ export const MusicList: React.FC<{ musicListPromise: Promise<MusicApi> }> = ({
         {isLoading ? (
           <Spinner />
         ) : (
-          musicList.map((music, i) => (
+          musicList.map((music) => (
             <div
               key={music.id}
               className='max-w-sm rounded overflow-hidden shadow-sm border border-zinc-200 col-span-3'

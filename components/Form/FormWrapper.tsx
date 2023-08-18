@@ -7,7 +7,7 @@ import { FormProps } from './types'
 export const FormWrapper: React.FC<FormProps> = ({
   children,
   schema,
-  defaultValues,
+  defaultValues = {},
   onSubmit = (data: unknown) => console.log(data),
   className = '',
   buttonLabel = 'submit',
@@ -16,7 +16,7 @@ export const FormWrapper: React.FC<FormProps> = ({
   const form = useForm({
     mode: 'onBlur',
     resolver: zodResolver(schema),
-    defaultValues: defaultValues || {},
+    defaultValues,
   })
 
   return (

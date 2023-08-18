@@ -1,20 +1,21 @@
 'use client'
 
 import { revalidateMusicData } from '@/actions'
-import { UpdateModal, UploadMusicForm } from '@/components'
-import { useMusicModal } from './useMusicModal'
-import { MusicModalProps } from './types'
+import { UpdateModal, UploadEventForm } from '@/components'
+import { useEventModal } from './useEventModal'
+import { EventModalProps } from './types'
 
-export const MusicModal: React.FC<MusicModalProps> = (props) => {
+export const EventModal: React.FC<EventModalProps> = (props) => {
   const {
     handleSubmit,
+    isLoading,
     isDeleting,
     handleDelete,
     toggleDeleteDialog,
     toggleModal,
     isModalOpen,
     FlashMessage,
-  } = useMusicModal(props)
+  } = useEventModal(props)
 
   return (
     <div>
@@ -26,7 +27,7 @@ export const MusicModal: React.FC<MusicModalProps> = (props) => {
           toggleDeleteDialog={toggleDeleteDialog}
           toggleModal={toggleModal}
         >
-          <UploadMusicForm
+          <UploadEventForm
             defaultValues={props.defaults}
             handleSubmit={handleSubmit}
             revalidate={revalidateMusicData}

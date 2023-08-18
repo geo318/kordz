@@ -2,28 +2,35 @@
 
 import { EventApi } from '@/types'
 import { useEventList } from './useEventList'
-import { Spinner } from '..'
-import { useState } from 'react'
+import { EventModal, Spinner } from '..'
 
 export const EventList: React.FC<{ eventListPromise: Promise<EventApi> }> = ({
   eventListPromise,
 }) => {
-  const { eventList, isLoading, activeEvent, setActiveEvent } =
-    useEventList(eventListPromise)
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const {
+    eventList,
+    isLoading,
+    activeEvent,
+    setActiveEvent,
+    FlashMessage,
+    isModalOpen,
+    setIsModalOpen,
+  } = useEventList(eventListPromise)
 
   return (
     <main>
-      {/* <EventModal
+      <FlashMessage />
+      <EventModal
         defaults={activeEvent}
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
-      /> */}
+      />
+
       <div className='grid grid-cols-12 gap-5'>
         {isLoading ? (
           <Spinner />
         ) : (
-          eventList.map((event, i) => (
+          eventList.map((event) => (
             <div
               key={event.id}
               className='max-w-sm rounded overflow-hidden shadow-sm border border-zinc-200 col-span-3'

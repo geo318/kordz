@@ -4,13 +4,15 @@ import { CloseFlash, Portal } from '@/components'
 import { useFlash } from './useFlash'
 import { Props } from './types'
 
-const Flash: React.FC<Props> = (props) => {
+const Flash: React.FC<Props> = ({ backdrop = false, ...props }) => {
   const { toggleFlash } = useFlash(props)
   return (
     <>
       {props.isActive && (
         <Portal>
-          <div className='bg-app-bg bg-opacity-70 fixed inset-0 z-10 block lg:hidden' />
+          {backdrop && (
+            <div className='bg-app-bg bg-opacity-70 fixed inset-0 z-10 block lg:hidden' />
+          )}
           <div
             className={`lg:block max-w-xs w-full text-base z-50 fixed lg:top-5 top-32 right-5 rounded-four ${
               props.flashInfo.error
