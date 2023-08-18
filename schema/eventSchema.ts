@@ -11,7 +11,7 @@ export const eventSchema = z.object({
     .nonempty('shouldn`t be empty')
     .min(1, 'description is too short')
     .max(200, 'description is too long'),
-  date: z.coerce.date(),
+  date: z.string(),
   url: z.string().url('link should start with https://'),
 })
 

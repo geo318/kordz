@@ -1,13 +1,17 @@
 import { eventSchemaApi } from '@/schema'
 import { useEffect, useState } from 'react'
-import { EventApi, MusicApi } from '@/types'
+import { EventApi } from '@/types'
+import { useFlashMessage } from '..'
 
 export const useEventList = (eventListPromise: Promise<EventApi>) => {
   const [eventList, setEventList] = useState<EventApi>([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const [activeEvent, setActiveEvent] = useState<EventApi[number]>(
     {} as EventApi[number]
   )
+
+  const { FlashMessage, handleFlashMessage } = useFlashMessage()
 
   useEffect(() => {
     setIsLoading(true)
@@ -17,12 +21,20 @@ export const useEventList = (eventListPromise: Promise<EventApi>) => {
         const parsedEventData = eventSchemaApi.parse(eventData)
         setEventList(parsedEventData)
       } catch (e) {
-        console.log(e)
+        handleFlashMessage(!!'error')
       }
 
       setIsLoading(false)
     })()
-  }, [eventListPromise])
+  }, [eventListPromise, handleFlashMessage])
 
-  return { eventList, isLoading, activeEvent, setActiveEvent }
+  return {
+    eventList,
+    isLoading,
+    activeEvent,
+    setActiveEvent,
+    FlashMessage,
+    isModalOpen,
+    setIsModalOpen,
+  }
 }

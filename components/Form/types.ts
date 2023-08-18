@@ -1,11 +1,11 @@
 import { FormSubmitFunction } from '@/types'
 import { Schema } from 'zod'
 
-export type FormProps = {
+export type FormProps<T> = {
   children: React.ReactNode
   schema: Schema
-  defaultValues?: { [key: string]: any }
-  onSubmit?: FormSubmitFunction<any>
+  defaultValues?: Record<string, string>
+  onSubmit?: FormSubmitFunction<T>
   buttonLabel?: string
   className?: string
   revalidate?: () => void

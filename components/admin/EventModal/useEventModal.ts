@@ -1,14 +1,14 @@
 import { objToFormData } from '@/utils'
 import { useState } from 'react'
-import { MusicModalProps } from './types'
-import { revalidateMusicData } from '@/actions'
+import { EventModalProps } from './types'
+import { revalidateEventData } from '@/actions'
 import { useFlashMessage } from '@/components'
 
-export const useMusicModal = ({
+export const useEventModal = ({
   defaults,
   isModalOpen,
   setIsModalOpen,
-}: MusicModalProps) => {
+}: EventModalProps) => {
   const [isDeleting, setIsDeleting] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const { FlashMessage, handleFlashMessage } = useFlashMessage()
@@ -20,15 +20,15 @@ export const useMusicModal = ({
     const formData = objToFormData(data)
     setIsLoading(true)
     try {
-      const res = await fetch(`/api/music?id=${defaults.id}`, {
+      const res = await fetch(`/api/event?id=${defaults.id}`, {
         method: 'PATCH',
         body: formData,
       })
       if (res.status !== 201) throw new Error()
 
-      toggleModal()
       handleFlashMessage()
-      revalidateMusicData()
+      revalidateEventData()
+      toggleModal()
       setIsLoading(false)
     } catch (e) {
       handleFlashMessage(!!'error')
@@ -37,13 +37,13 @@ export const useMusicModal = ({
 
   const handleDelete = async () => {
     try {
-      const res = await fetch(`/api/music?id=${defaults.id}`, {
+      const res = await fetch(`/api/event?id=${defaults.id}`, {
         method: 'DELETE',
       })
       if (res.status !== 202) throw new Error()
 
       handleFlashMessage()
-      revalidateMusicData()
+      revalidateEventData()
       toggleDeleteDialog()
       toggleModal()
     } catch {

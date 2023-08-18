@@ -36,21 +36,27 @@ export const POST = async (req: Request) => {
     await prisma.$disconnect()
   }
 
-  return new Response(JSON.stringify(mapped))
+  return new Response('ok', { status: 201 })
 }
-
 
 export const PATCH = async (req: Request) => {
   const { searchParams } = new URL(req.url)
   const id = searchParams.get('id')
   const formData = await req.formData()
+  const [mapped, file] = getFormValues<Music>(formData)
+  let pathName: string | undefined = undefined
+
+  if (file) {
+    const { path } = await writeFile(file)
+    pathName = path
+  }
 
   try {
     await prisma.music.update({
       where: {
         id: Number(id),
       },
-      data: formData,
+      data: { ...mapped, ...(pathName ? { thumbnail: pathName } : {}) },
     })
   } catch (e) {
     console.log(e)

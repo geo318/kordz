@@ -6,8 +6,8 @@ const prisma = new PrismaClient()
 
 export const GET = async () => {
   try {
-    const musicList = await prisma.event.findMany()
-    return new Response(JSON.stringify(musicList), { status: 200 })
+    const eventList = await prisma.event.findMany()
+    return new Response(JSON.stringify(eventList), { status: 200 })
   } catch (e) {
     console.log(e)
     process.exit(1)
@@ -18,13 +18,11 @@ export const GET = async () => {
 
 export const POST = async (req: Request) => {
   const formData = await req.formData()
-  const [mapped] = getFormValues<EventApi>(formData)
+  const [mapped] = getFormValues<EventApi[number]>(formData)
 
   try {
     await prisma.event.create({
-      data: {
-        ...mapped,
-      },
+      data: mapped,
     })
   } catch (e) {
     console.log(e)
@@ -37,16 +35,17 @@ export const POST = async (req: Request) => {
 }
 
 export const PATCH = async (req: Request) => {
+  const formData = await req.formData()
+  const [mapped] = getFormValues<EventApi[number]>(formData)
+
   const { searchParams } = new URL(req.url)
   const id = searchParams.get('id')
-  const formData = await req.formData()
-
   try {
     await prisma.event.update({
       where: {
         id: Number(id),
       },
-      data: formData,
+      data: mapped,
     })
   } catch (e) {
     console.log(e)

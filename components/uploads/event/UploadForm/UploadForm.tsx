@@ -9,10 +9,11 @@ export function UploadEventForm({
   handleSubmit,
   defaultValues,
   revalidate,
+  edit,
 }: Props<Event> & { edit?: boolean }): JSX.Element {
   return (
     <FormWrapper
-      schema={schema}
+      schema={edit ? schema.optional() : schema}
       defaultValues={defaultValues}
       onSubmit={handleSubmit}
       className='bg-white'

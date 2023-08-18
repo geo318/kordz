@@ -1,6 +1,7 @@
 import { musicSchemaApi } from '@/schema'
 import { useEffect, useState } from 'react'
 import { MusicApi } from '@/types'
+import { useFlashMessage } from '..'
 
 export const useMusicList = (musicListPromise: Promise<MusicApi>) => {
   const [musicList, setMusicList] = useState<MusicApi>([])
@@ -8,6 +9,8 @@ export const useMusicList = (musicListPromise: Promise<MusicApi>) => {
   const [activeMusic, setActiveMusic] = useState<MusicApi[number]>(
     {} as MusicApi[number]
   )
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const { FlashMessage, handleFlashMessage } = useFlashMessage()
 
   useEffect(() => {
     setIsLoading(true)
@@ -17,12 +20,20 @@ export const useMusicList = (musicListPromise: Promise<MusicApi>) => {
         const parsedMusicData = musicSchemaApi.parse(musicData)
         setMusicList(parsedMusicData)
       } catch (e) {
-        console.log(e)
+        handleFlashMessage(!!'error')
       }
 
       setIsLoading(false)
     })()
-  }, [musicListPromise])
+  }, [musicListPromise, handleFlashMessage])
 
-  return { musicList, isLoading, activeMusic, setActiveMusic }
+  return {
+    musicList,
+    isLoading,
+    activeMusic,
+    setActiveMusic,
+    isModalOpen,
+    setIsModalOpen,
+    FlashMessage,
+  }
 }

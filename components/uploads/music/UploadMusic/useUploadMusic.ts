@@ -1,29 +1,31 @@
+import { useFlashMessage } from '@/components'
 import { objToFormData } from '@/utils'
 import { revalidateTag } from 'next/cache'
-import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 export const useUploadMusic = () => {
   const [isLoading, setIsLoading] = useState(false)
-  const router = useRouter()
+  const [isLoaded, setIsLoaded] = useState(false)
+  const { FlashMessage, handleFlashMessage } = useFlashMessage(
+    'something went wrong...'
+  )
 
   const handleSubmit = async (data: FormData) => {
     const formData = objToFormData(data)
     setIsLoading(true)
     try {
-      await fetch('/api/music', {
+      const res = await fetch('/api/music', {
         method: 'POST',
         body: formData,
       })
-      router.push('/')
+      if (!res.ok) throw new Error('something went wrong...')
 
-      revalidateTag('music-list')
-
-      setIsLoading(false)
+      setIsLoaded(true)
     } catch (e) {
-      console.log(e)
+      handleFlashMessage(!!'error')
     } finally {
+      setIsLoading(false)
     }
   }
-  return { isLoading, handleSubmit }
+  return { isLoading, handleSubmit, FlashMessage, isLoaded, setIsLoaded }
 }

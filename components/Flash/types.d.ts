@@ -1,5 +1,6 @@
 export type Props = {
-  isActive: boolean;
-  setIsActive: function;
-  flashInfo: { message: string; error: boolean };
-};
+  isActive: boolean
+  setIsActive: function
+  flashInfo: { message: string; error: boolean }
+  backdrop?: boolean
+}
