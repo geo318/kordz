@@ -23,3 +23,17 @@ h4,
 p {
   text-wrap: balance;
 }
+
+.fade-in {
+  opacity: .3;
+  animation: fade-in 500ms forwards ease-in;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: .3;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -2,7 +2,7 @@
 
 import { EventApi } from '@/types'
 import { useEventList } from './useEventList'
-import { Button, EventModal, Spinner } from '..'
+import { Button, Spinner, EventModal } from '@/components'
 import Link from 'next/link'
 
 export const EventList: React.FC<{ eventListPromise: Promise<EventApi> }> = ({

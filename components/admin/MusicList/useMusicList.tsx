@@ -1,7 +1,7 @@
 import { musicSchemaApi } from '@/schema'
 import { useEffect, useState } from 'react'
 import { MusicApi } from '@/types'
-import { useFlashMessage } from '..'
+import { useFlashMessage } from '@/components'
 
 export const useMusicList = (musicListPromise: Promise<MusicApi>) => {
   const [musicList, setMusicList] = useState<MusicApi>([])

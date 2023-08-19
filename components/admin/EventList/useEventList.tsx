@@ -1,7 +1,7 @@
 import { eventSchemaApi } from '@/schema'
 import { useEffect, useState } from 'react'
 import { EventApi } from '@/types'
-import { useFlashMessage } from '..'
+import { useFlashMessage } from '@/components'
 
 export const useEventList = (eventListPromise: Promise<EventApi>) => {
   const [eventList, setEventList] = useState<EventApi>([])
