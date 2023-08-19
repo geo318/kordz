@@ -12,6 +12,7 @@ export const musicSchemaApi = z.array(
     id: z.coerce.number(),
     title: z.string(),
     thumbnail: z.string(),
+    url: z.string().url(),
     createdAt: z.coerce.date(),
     updatedAt: z.coerce.date(),
   })

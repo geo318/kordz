@@ -2,7 +2,8 @@
 
 import { EventApi } from '@/types'
 import { useEventList } from './useEventList'
-import { EventModal, Spinner } from '..'
+import { Button, EventModal, Spinner } from '..'
+import Link from 'next/link'
 
 export const EventList: React.FC<{ eventListPromise: Promise<EventApi> }> = ({
   eventListPromise,
@@ -33,20 +34,28 @@ export const EventList: React.FC<{ eventListPromise: Promise<EventApi> }> = ({
           eventList.map((event) => (
             <div
               key={event.id}
-              className='max-w-sm rounded overflow-hidden shadow-sm border border-zinc-200 col-span-3'
-              onClick={() => {
-                setActiveEvent(event)
-                setIsModalOpen((prev) => !prev)
-              }}
+              className='max-w-sm p-4 rounded overflow-hidden shadow-sm border border-zinc-200 col-span-3'
             >
-              <p>{event.date}</p>
-              <p>{event.description}</p>
-              <p>{event.location}</p>
-              <p>{event.url}</p>
-
-              <div className='px-6 py-4'>
-                <h4 className='font-bold text-xl mb-2'>{event.id}</h4>
-              </div>
+              <p>⏳ {event.date}</p>
+              <p>👉 {event.description}</p>
+              <p>🗺 {event.location}</p>
+              <Link
+                target='_blank'
+                href={event.url}
+                className='text-blue-500 hover:underline'
+              >
+                see destination
+              </Link>
+              <br />
+              <Button
+                onClick={() => {
+                  setActiveEvent(event)
+                  setIsModalOpen((prev) => !prev)
+                }}
+                className='border py-2 w-full mt-5 hover:bg-gray-100'
+              >
+                Edit
+              </Button>
             </div>
           ))
         )}

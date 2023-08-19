@@ -1,35 +1,31 @@
-import {
-  Apple,
-  Button,
-  Facebook,
-  Instagram,
-  Logo,
-  SoundCloud,
-  Spotify,
-  Youtube,
-} from '@/components'
+import { Button, CarouselSkeleton, Social } from '@/components'
+import { logo } from '@/public'
+import { useAdmin } from '@/hooks/useAdmin'
 import Image from 'next/image'
-import banner from '@/public/assets/banner.png'
+import Link from 'next/link'
+import dynamic from 'next/dynamic'
+
+const Carousel = dynamic(() => import('@/components/Carousel/Carousel'), {
+  ssr: false,
+  loading: () => <CarouselSkeleton />,
+})
 
 export default function Home() {
+  const { musicList, eventList } = useAdmin()
+
   return (
     <main className='flex min-h-screen flex-col items-center px-24 bg-app-blue'>
-      <header className='sticky top-0 bg-app-blue bg-opacity-90 w-full'>
+      <header className='sticky top-0 bg-app-blue bg-opacity-90 w-full z-50'>
         <div className='flex items-center flex-col w-full p-8'>
-          <Logo />
-          <div className='flex gap-6 mt-6 items-center'>
-            <Facebook />
-            <Instagram />
-            <SoundCloud />
-            <Spotify />
-            <Youtube />
-            <Apple />
-          </div>
+          <Link href='/admin'>
+            <Image src={logo} alt='logo Kordz' width={170} />
+          </Link>
+
+          <Social />
         </div>
       </header>
-
-      <section className='mt-4 mb-14'>
-        <Image src={banner} alt='banner' width={500} height={500} />
+      <section className='mt-4 mb-14 w-full'>
+        <Carousel musicList={musicList()} />
       </section>
 
       <section>
@@ -60,7 +56,9 @@ export default function Home() {
         <div className='font-medium'>
           <a>koka@stocktonrecords.com</a>
         </div>
-        <Button className='mt-4 w-48 bg-black text-white'>Contact</Button>
+        <Link href='mailto:koka@stocktonrecords.com'>
+          <Button className='mt-4 w-48 bg-black text-white'>Contact</Button>
+        </Link>
       </address>
       <footer>
         <p className='p-6 text-black font-semibold text-sm'>
