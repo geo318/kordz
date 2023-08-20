@@ -20,15 +20,19 @@ export const useObserver = <T extends Element>({
 
       if (entry.isIntersecting) {
         entry.target.classList.add(
-          ...(animationStart || ['translate-x-0', 'opacity-100'])
+          ...(animationStart || ['end'])
         )
         entry.target.classList.remove(
-          ...(animationEnd || ['-translate-x-full', 'opacity-0'])
+          ...(animationEnd || ['start'])
         )
         setHasAnimated(true)
       } else {
-        entry.target.classList.add('-translate-x-full', 'opacity-0')
-        entry.target.classList.remove('translate-x-0', 'opacity-100')
+        entry.target.classList.add(
+          ...(animationEnd || ['start'])
+        )
+        entry.target.classList.remove(
+          ...(animationStart || ['end'])
+        )
         setHasAnimated(false)
       }
     })
@@ -36,6 +40,7 @@ export const useObserver = <T extends Element>({
     observer.observe(ref.current)
     return () => {
       observer.disconnect()
+      // setHasAnimated(false)
     }
   }, [hasAnimated])
   return { ref }

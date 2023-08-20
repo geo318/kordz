@@ -11,7 +11,7 @@ export const ListItem = ({ e }: { e: EventApi[number] }) => {
 
   return (
     <li
-      className='event text-cen>ter flex flex-col gap-4 items-center transition-all duration-300 delay-200'
+      className='event text-center flex flex-col gap-4 items-center transition-all duration-300 delay-100'
       key={e.id}
       ref={ref}
     >
@@ -23,7 +23,7 @@ export const ListItem = ({ e }: { e: EventApi[number] }) => {
         <p>{e.description}</p>
       </div>
       <Link href={e.url}>
-        <Button className='w-32 border border-app-blue hover:border-black '>
+        <Button className='w-32 border border-app-blue hover:ring-blue-100 hover:ring-2 '>
           tickets
         </Button>
       </Link>

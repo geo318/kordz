@@ -51,6 +51,16 @@ header img {
   }
 }
 
+.start {
+  translate: -100%;
+  opacity: 0.1;
+}
+
+.end {
+  translate: 0 0;
+  opacity: 1;
+}
+
 ::-webkit-scrollbar {
   width: 0.25rem;
   height: 5px;
