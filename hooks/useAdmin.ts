@@ -11,7 +11,5 @@ export const useAdmin = () => {
       next: { tags: ['event-list'] },
     }).then((res) => res.json())
 
-  let x = eventList()
-
   return { musicList, eventList }
 }
