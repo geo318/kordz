@@ -13,6 +13,7 @@ export const Button: React.FC<ButtonProps> = ({
         className
       )}
       {...props}
+      name='button'
     >
       {children}
     </button>

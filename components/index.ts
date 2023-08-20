@@ -1,6 +1,10 @@
 export * from './icons'
+<<<<<<< Updated upstream
 export * from './shared'
 export * from './uploads'
+=======
+export * from './Button'
+>>>>>>> Stashed changes
 export * from './modals'
 export * from './admin'
 export * from './modals'
