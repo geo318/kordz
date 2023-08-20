@@ -1,5 +1,5 @@
 import { EventList, Nav } from '@/components'
-import { useAdmin } from '@/hooks/useAdmin'
+import { useAdmin } from '@/hooks'
 import Link from 'next/link'
 
 export default function Admin() {

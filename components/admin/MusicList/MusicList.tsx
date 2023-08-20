@@ -3,7 +3,7 @@
 import { MusicApi } from '@/types'
 import Image from 'next/image'
 import { useMusicList } from './useMusicList'
-import { Button, Spinner } from '..'
+import { Button, Spinner } from '@/components'
 import { MusicModal } from '@/components'
 import Link from 'next/link'
 

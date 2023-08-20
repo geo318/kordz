@@ -10,7 +10,7 @@ import { Arrow, Button } from '..'
 export function Carousel(props: Props) {
   const { music, next, prev, isLoading, FlashMessage } = useCarousel(props)
   return (
-    <div className='group w-full'>
+    <div className='group w-full fade-in'>
       <div className='mx-auto max-w-[31.25rem] relative'>
         <FlashMessage />
         {music && (
@@ -23,6 +23,8 @@ export function Carousel(props: Props) {
                 alt={music.title}
                 width={500}
                 height={500}
+                priority
+                className='fade-in'
               />
             )}
             <div className='flex opacity-0 group-hover/image:opacity-100 transition-opacity duration-300 justify-center items-center absolute inset-0 bg-black bg-opacity-50'>

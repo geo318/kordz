@@ -4,13 +4,13 @@ import { Portal, CloseIcon } from '@/components'
 import { DeleteModal } from './DeleteModal'
 import { Props } from './type'
 
-export const UpdateModal: React.FC<Props> = ({
+export function UpdateModal({
   isDeleting,
   children,
   handleDelete,
   toggleModal,
   toggleDeleteDialog,
-}) => {
+}: Props) {
   return (
     <>
       <Portal>
