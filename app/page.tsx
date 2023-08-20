@@ -48,7 +48,9 @@ export default function Home() {
           <a>koka@stocktonrecords.com</a>
         </div>
         <Link href='mailto:koka@stocktonrecords.com'>
-          <Button className='mt-4 w-48 bg-black text-white'>Contact</Button>
+          <Button className='mt-4 w-48 bg-black text-white hover:bg-white hover:text-black transition-all'>
+            Contact
+          </Button>
         </Link>
       </address>
       <footer>

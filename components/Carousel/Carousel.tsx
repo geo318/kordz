@@ -29,7 +29,7 @@ export function Carousel(props: Props) {
             )}
             <div className='flex opacity-0 group-hover/image:opacity-100 transition-opacity duration-300 justify-center items-center absolute inset-0 bg-black bg-opacity-50'>
               <Link href={music.url} target='_blank'>
-                <Button className='w-32 hover:opacity-90 transition-all duration-200 cursor-pointer'>
+                <Button className='listen relative w-32 hover:bg-black hover:text-white cursor-pointer transition-all'>
                   Listen
                 </Button>
               </Link>

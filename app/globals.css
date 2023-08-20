@@ -24,16 +24,47 @@ p {
   text-wrap: balance;
 }
 
+header > div,
+header img {
+  transition: 150ms;
+}
+
+.header-small > div {
+  padding: 20px;
+}
+
+.header-small img {
+  width: 100px;
+}
+
 .fade-in {
-  opacity: .3;
+  opacity: 0.3;
   animation: fade-in 500ms forwards ease-in;
 }
 
 @keyframes fade-in {
   from {
-    opacity: .3;
+    opacity: 0.3;
   }
   to {
     opacity: 1;
   }
+}
+
+::-webkit-scrollbar {
+  width: 0.25rem;
+  height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #fff;
+  border-radius: 2px;
+  margin: 0.2rem;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 2px;
 }

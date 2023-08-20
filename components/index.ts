@@ -1,5 +1,5 @@
 export * from './icons'
-export * from './shared'
+export * from './Button'
 export * from './modals'
 export * from './admin'
 export * from './modals'
