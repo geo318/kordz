@@ -6,7 +6,6 @@ import { useFlashMessage } from '@/components'
 export const useMusicList = (musicListPromise: Promise<MusicApi>) => {
   const [musicList, setMusicList] = useState<MusicApi>([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [error, setError] = useState<string>('') //delete this
   const [activeMusic, setActiveMusic] = useState<MusicApi[number]>(
     {} as MusicApi[number]
   )
@@ -30,7 +29,6 @@ export const useMusicList = (musicListPromise: Promise<MusicApi>) => {
   }, [musicListPromise, handleFlashMessage])
 
   return {
-    error, //delete this
     musicList,
     isLoading,
     activeMusic,
