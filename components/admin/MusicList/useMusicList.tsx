@@ -20,7 +20,6 @@ export const useMusicList = (musicListPromise: Promise<MusicApi>) => {
         const parsedMusicData = musicSchemaApi.parse(musicData)
         setMusicList(parsedMusicData)
       } catch (e) {
-        setError(JSON.stringify(e)) //delete this
         handleFlashMessage(!!'error')
       }
 
