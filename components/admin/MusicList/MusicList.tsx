@@ -23,7 +23,7 @@ export const MusicList: React.FC<{ musicListPromise: Promise<MusicApi> }> = ({
 
   return (
     <main>
-      <div>{error}</div> //delete this
+      <div>{error}</div>
       <FlashMessage />
       <MusicModal
         defaults={activeMusic}
