@@ -35,7 +35,7 @@ export default function Home() {
           <Social />
         </div>
       </Header>
-      <section className='md:mt-4 mb-14 w-full md:h-[32rem] relative'>
+      <section className='md:mt-10 mb-14 w-full md:h-[32rem] aspect-square relative'>
         <Carousel musicList={musicList()} />
       </section>
 

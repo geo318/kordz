@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Apple, Facebook, Instagram, SoundCloud, Spotify, Youtube } from '..'
 
 export const Social = () => (
-  <div className='flex gap-6 mt-6 items-center justify-center md:relative md:bg-transparent fixed inset-x-0 bottom-0 p-5 bg-blue-600 bg-opacity-90'>
+  <div className='flex gap-6 mt-6 items-center justify-center md:relative md:bg-transparent fixed inset-x-0 bottom-0 p-5 md:p-0 bg-blue-600 bg-opacity-90'>
     <Link
       className='hover:opacity-80'
       target='_blank'
