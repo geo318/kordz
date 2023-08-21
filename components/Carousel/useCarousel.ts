@@ -3,6 +3,7 @@ import { Props } from './types'
 import { musicSchemaApi } from '@/schema'
 import { MusicApi } from '@/types'
 import { useFlashMessage } from '..'
+import { useTouchScroll } from '@/hooks'
 
 export const useCarousel = ({ musicList }: Props) => {
   const [isLoading, setIsLoading] = useState(false)
@@ -39,7 +40,14 @@ export const useCarousel = ({ musicList }: Props) => {
     setIndex((prev) => prev - 1)
   }
 
+  const { isMobile, handleTouchEnd, handleTouchMove, handleTouchStart } =
+    useTouchScroll({ turnLeft: prev, turnRight: next })
+
   return {
+    isMobile,
+    handleTouchEnd,
+    handleTouchMove,
+    handleTouchStart,
     FlashMessage,
     isLoading,
     music: music[index],

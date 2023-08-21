@@ -25,7 +25,7 @@ export default function Home() {
   const { musicList, eventList } = useAdmin()
 
   return (
-    <main className='flex min-h-screen flex-col items-center px-24 bg-app-blue'>
+    <main className='flex min-h-screen flex-col items-center md:px-24 px-5 bg-app-blue'>
       <Header>
         <div className='flex items-center flex-col w-full p-8'>
           <Link href='/admin'>
@@ -35,14 +35,14 @@ export default function Home() {
           <Social />
         </div>
       </Header>
-      <section className='mt-4 mb-14 w-full h-[32rem] relative'>
+      <section className='md:mt-4 mb-14 w-full md:h-[32rem] relative'>
         <Carousel musicList={musicList()} />
       </section>
 
       <section>
         <Events eventsPromise={eventList()} />
       </section>
-      <address className='leading-6 text-sm not-italic text-black text-center my-36'>
+      <address className='leading-6 text-sm not-italic text-black text-center md:my-36 mb-20 mt-36'>
         <h4 className='font-bold'>Management:</h4>
         <div className='font-medium'>
           <a>koka@stocktonrecords.com</a>
