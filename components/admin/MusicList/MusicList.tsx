@@ -6,7 +6,7 @@ import { useMusicList } from './useMusicList'
 import { Button, Spinner } from '@/components'
 import { MusicModal } from '@/components'
 import Link from 'next/link'
-import { getImage } from '@/utils'
+import { getBlurImage, getImage } from '@/utils'
 
 export const MusicList: React.FC<{ musicListPromise: Promise<MusicApi> }> = ({
   musicListPromise,
@@ -51,9 +51,11 @@ export const MusicList: React.FC<{ musicListPromise: Promise<MusicApi> }> = ({
                 </div>
                 <Image
                   src={getImage(music.thumbnail)}
-                  alt=''
+                  alt={music.title}
                   width={300}
                   height={300}
+                  placeholder='blur'
+                  blurDataURL={getBlurImage(music.thumbnail)}
                 />
               </div>
 

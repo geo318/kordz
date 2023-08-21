@@ -5,6 +5,12 @@ export const generateFileName = (fileName: string) => {
   return `${name.trim().replace(/ /g, '-')}-${dateString}.${ext}`
 }
 
-export const getImage = (slug: string) => {
-  return `${process.env.NEXT_PUBLIC_URL}${slug}`
+export const getImage = (path: string) => {
+  return `${process.env.NEXT_PUBLIC_URL}${path}`
+}
+
+export const getBlurImage = (path: string) => {
+  if (!path) return
+  const [_, , ...slug] = path.split(/\//)
+  return `${process.env.NEXT_PUBLIC_URL}/blur/${slug.join('/')}`
 }

@@ -19,6 +19,7 @@ export function Carousel(props: Props) {
     handleTouchEnd,
     handleTouchMove,
     handleTouchStart,
+    base64Image,
   } = useCarousel(props)
 
   return (
@@ -35,14 +36,26 @@ export function Carousel(props: Props) {
             {isLoading ? (
               <CarouselSkeleton />
             ) : (
-              <Image
-                src={getImage(music.thumbnail)}
-                alt={music.title}
-                width={500}
-                height={500}
-                priority
-                className='fade-in no-drag'
-              />
+              base64Image && (
+                <Image
+                  src={getImage(music.thumbnail)}
+                  alt={music.title}
+                  width={500}
+                  height={500}
+                  priority
+                  className='fade-in no-drag opacity-0 transition-opacity duration-500'
+                  onLoadingComplete={(image) =>
+                    image.classList.remove('opacity-0')
+                  }
+                  placeholder='blur'
+                  blurDataURL={base64Image as string}
+                  style={{
+                    objectFit: 'cover',
+                    minWidth: '100%',
+                    minHeight: '100%',
+                  }}
+                />
+              )
             )}
             {!isMobile && (
               <div className='flex opacity-0 group-hover/image:opacity-100 transition-opacity duration-300 justify-center items-center absolute inset-0 bg-black bg-opacity-50'>

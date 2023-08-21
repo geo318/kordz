@@ -18,7 +18,7 @@ export const useMusicList = (musicListPromise: Promise<MusicApi>) => {
       try {
         const musicData = await musicListPromise
         const parsedMusicData = musicSchemaApi.parse(musicData)
-        setMusicList(parsedMusicData)
+        setMusicList(parsedMusicData.reverse())
       } catch (e) {
         handleFlashMessage(!!'error')
       }

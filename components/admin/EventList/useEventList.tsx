@@ -19,7 +19,7 @@ export const useEventList = (eventListPromise: Promise<EventApi>) => {
       try {
         const eventData = await eventListPromise
         const parsedEventData = eventSchemaApi.parse(eventData)
-        setEventList(parsedEventData)
+        setEventList(parsedEventData.reverse())
       } catch (e) {
         handleFlashMessage(!!'error')
       }

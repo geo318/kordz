@@ -15,9 +15,7 @@ export const ListItem = ({ e }: { e: EventApi[number] }) => {
       key={e.id}
       ref={ref}
     >
-      <h2 className='text-[2rem] font-bold uppercase'>
-        {dateFormatter(new Date(e.date))}
-      </h2>
+      <h2 className='text-[2rem] font-bold uppercase'>{e.date}</h2>
       <div className='w-full max-w-sm text-2xl leading-normal tracking-wide '>
         <p>{e.location}</p>
         <p>{e.description}</p>

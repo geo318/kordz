@@ -4,6 +4,7 @@ import { FormWrapper, Input } from '@/components'
 import { eventSchema as schema } from '@/schema'
 import { Props } from './types'
 import { Event } from '@/types'
+import { dateFormatter } from '@/components/Events/helper'
 
 export function UploadEventForm({
   handleSubmit,
@@ -26,7 +27,7 @@ export function UploadEventForm({
         placeholder='https://example.com/some-url'
         label='Link'
       />
-      <Input name='date' label='Date' type='date' />
+      <Input name='date' label='Date' placeholder={dateFormatter(new Date())} />
     </FormWrapper>
   )
 }
