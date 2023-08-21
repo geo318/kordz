@@ -4,3 +4,7 @@ export const generateFileName = (fileName: string) => {
 
   return `${name.trim().replace(/ /g, '-')}-${dateString}.${ext}`
 }
+
+export const getImage = (slug: string) => {
+  return `${process.env.NEXT_PUBLIC_URL}${slug}`
+}

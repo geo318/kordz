@@ -6,6 +6,7 @@ import { useMusicList } from './useMusicList'
 import { Button, Spinner } from '@/components'
 import { MusicModal } from '@/components'
 import Link from 'next/link'
+import { getImage } from '@/utils'
 
 export const MusicList: React.FC<{ musicListPromise: Promise<MusicApi> }> = ({
   musicListPromise,
@@ -48,7 +49,12 @@ export const MusicList: React.FC<{ musicListPromise: Promise<MusicApi> }> = ({
                 <div className='group-hover:flex items-center justify-center hidden absolute inset-0 bg-blue-800 bg-opacity-10'>
                   <Button className='hover:bg-gray-100'>Edit</Button>
                 </div>
-                <Image src={music.thumbnail} alt='' width={300} height={300} />
+                <Image
+                  src={getImage(music.thumbnail)}
+                  alt=''
+                  width={300}
+                  height={300}
+                />
               </div>
 
               <div className='px-6 py-4'>

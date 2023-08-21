@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { CarouselSkeleton } from '.'
 import Link from 'next/link'
 import { Arrow, Button } from '..'
+import { getImage } from '@/utils'
 
 export function Carousel(props: Props) {
   const {
@@ -35,7 +36,7 @@ export function Carousel(props: Props) {
               <CarouselSkeleton />
             ) : (
               <Image
-                src={music.thumbnail}
+                src={getImage(music.thumbnail)}
                 alt={music.title}
                 width={500}
                 height={500}
