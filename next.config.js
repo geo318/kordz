@@ -5,7 +5,7 @@ const nextConfig = {
     serverActionsBodySizeLimit: '5mb',
   },
   images: {
-    domains: ['localhost'],
+    domains: [process.env.NEXT_PUBLIC_URL],
     remotePatterns: [
       {
         protocol: process.env.NEXT_PUBLIC_PROTOCOL,
