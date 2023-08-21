@@ -7,8 +7,8 @@ export default function Admin() {
 
   return (
     <div>
-      <nav className='relative'>
-        <Link href='/admin' className='absolute left-0'>
+      <nav className='relative md:mb-0 mb-20'>
+        <Link href='/admin' className='absolute left-0 mt-20 md:mt-0'>
           &lt; Back
         </Link>
         <h1 className='pb-10 text-xl font-semibold text-center'>

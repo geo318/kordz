@@ -28,7 +28,9 @@ export function UploadMusic() {
           </div>
         )
       ) : (
-        <Spinner />
+        <div className='w-full h-full flex items-center justify-center'>
+          <Spinner />
+        </div>
       )}
     </>
   )

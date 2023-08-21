@@ -34,7 +34,7 @@ export const EventList: React.FC<{ eventListPromise: Promise<EventApi> }> = ({
           eventList.map((event) => (
             <div
               key={event.id}
-              className='max-w-sm p-4 rounded overflow-hidden shadow-sm border border-zinc-200 col-span-3'
+              className='max-w-sm p-4 rounded overflow-hidden shadow-sm border border-zinc-200 md:col-span-3 col-span-6'
             >
               <p>⏳ {event.date}</p>
               <p>👉 {event.description}</p>

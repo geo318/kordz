@@ -7,7 +7,7 @@ export const Nav = () => {
   const pathName = usePathname()
 
   return (
-    <nav className='flex py-2'>
+    <nav className='flex py-2 mt-20 md:mt-0 justify-between'>
       <Link
         href='/admin/music'
         className={`${

@@ -27,7 +27,7 @@ export function UploadEvent() {
         />
       )}
       {!isLoading ? null : (
-        <div className='flex items-center justify-center'>
+        <div className='w-full h-full flex items-center justify-center'>
           <Spinner />
         </div>
       )}

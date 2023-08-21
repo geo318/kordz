@@ -35,7 +35,7 @@ export const MusicList: React.FC<{ musicListPromise: Promise<MusicApi> }> = ({
           musicList.map((music) => (
             <div
               key={music.id}
-              className='max-w-sm rounded-md overflow-hidden shadow-sm border border-zinc-200 col-span-3 cursor-pointer hover:shadow-md'
+              className='max-w-sm rounded-md overflow-hidden shadow-sm border border-zinc-200 md:col-span-3 col-span-6 cursor-pointer hover:shadow-md'
             >
               <div
                 onClick={() => {
