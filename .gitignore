@@ -35,4 +35,4 @@ yarn-error.log*
 next-env.d.ts
 /prisma/database
 /public/images
-/public/path
+/public/blur
