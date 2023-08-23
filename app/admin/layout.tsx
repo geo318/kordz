@@ -8,11 +8,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <main className='text-black bg-white md:px-20 px-5 py-5 mx-auto'>
-      <Link href='/' className='flex justify-center py-5'>
+    <>
+      <Link href='/' className='flex justify-center py-5 w-full bg-app-blue'>
         <Image src={logo} alt='logo' width={80} />
       </Link>
-      {children}
-    </main>
+      <main className='text-black bg-white md:px-20 px-5 py-5 mx-auto'>
+        {children}
+      </main>
+    </>
   )
 }

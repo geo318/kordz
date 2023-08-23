@@ -20,14 +20,14 @@ export function UploadEventForm({
       className='bg-white'
       revalidate={revalidate}
     >
-      <Input name='location' placeholder='Event place' />
+      <Input name='date' label='Date' placeholder={dateFormatter(new Date())} />
+      <Input name='location' placeholder='Event place/location' />
       <Input name='description' placeholder='Event details' />
       <Input
         name='url'
         placeholder='https://example.com/some-url'
         label='Link'
       />
-      <Input name='date' label='Date' placeholder={dateFormatter(new Date())} />
     </FormWrapper>
   )
 }

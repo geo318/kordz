@@ -28,9 +28,7 @@ export default function Home() {
     <main className='flex min-h-screen flex-col items-center md:px-24 px-5 bg-app-blue'>
       <Header>
         <div className='flex items-center flex-col w-full p-8'>
-          <Link href='/admin'>
-            <Image src={logo} alt='logo Kordz' width={170} priority />
-          </Link>
+          <Image src={logo} alt='logo Kordz' width={170} priority />
 
           <Social />
         </div>

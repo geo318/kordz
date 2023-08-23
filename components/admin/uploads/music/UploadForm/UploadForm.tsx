@@ -13,7 +13,7 @@ export function UploadMusicForm({
 }: Props<Music> & { edit?: boolean }): JSX.Element {
   return (
     <FormWrapper
-      schema={edit ? schema.partial() : schema}
+      schema={edit ? schema({ partial: true }) : schema()}
       defaultValues={defaultValues}
       onSubmit={handleSubmit}
       className='bg-white'

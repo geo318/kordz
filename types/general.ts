@@ -1,7 +1,13 @@
-import { eventSchema, eventSchemaApi, musicSchema, musicSchemaApi } from '@/schema'
+import {
+  eventSchema,
+  eventSchemaApi,
+  musicSchema,
+  musicSchemaApi,
+} from '@/schema'
 import { z } from 'zod'
 
-export type Music = z.infer<typeof musicSchema>
+const musicType = musicSchema()
+export type Music = z.infer<typeof musicType>
 
 export type MusicApi = z.infer<typeof musicSchemaApi>
 

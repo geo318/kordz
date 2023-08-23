@@ -16,7 +16,7 @@ export const useEvents = ({
       try {
         const eventData = await eventsPromise
         const parsedEventsData = eventSchemaApi.parse(eventData)
-        setEvents(parsedEventsData.reverse())
+        setEvents(parsedEventsData)
       } catch (e) {
         handleFlashMessage(!!'error')
       }

@@ -37,7 +37,7 @@ export function Carousel(props: Props) {
               <CarouselSkeleton />
             ) : (
               <Image
-                src={music.thumbnail}
+                src={getImage(music.thumbnail)}
                 alt={music.title}
                 width={500}
                 height={500}

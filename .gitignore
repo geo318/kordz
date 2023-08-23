@@ -34,5 +34,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 /prisma/database
-/public/images
-/public/path
+/public/static

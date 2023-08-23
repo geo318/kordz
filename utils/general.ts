@@ -1,5 +1,9 @@
 export const generateFileName = (fileName: string) => {
-  const [name, ext] = fileName.toLocaleLowerCase().split('.')
+  const [name, ext] = fileName
+    .trim()
+    .replace(/\//g, '-')
+    .toLocaleLowerCase()
+    .split('.')
   const dateString = new Date()
     .toISOString()
     .toLocaleLowerCase()
@@ -14,6 +18,6 @@ export const getImage = (path: string) => {
 
 export const getBlurImage = (path: string) => {
   if (!path) return
-  const [_, , , ...slug] = path.split(/\//)
-  return `/static/blur/${slug.join('/')}`
+  const slug = path.split(/\//).pop()
+  return `/static/blur/${slug}`
 }
