@@ -1,6 +1,7 @@
 import { Music } from '@/types'
 import { getFormValues, getImage, writeFile } from '@/utils'
 import { PrismaClient } from '@prisma/client'
+import { restartApp } from '@/utils'
 
 const prisma = new PrismaClient()
 
@@ -29,6 +30,7 @@ export const POST = async (req: Request) => {
         thumbnail: path,
       },
     })
+    restartApp()
   } catch (e) {
     process.exit(1)
   } finally {
@@ -57,6 +59,7 @@ export const PATCH = async (req: Request) => {
       },
       data: { ...mapped, ...(pathName ? { thumbnail: pathName } : {}) },
     })
+    restartApp()
   } catch (e) {
     console.log(e)
     process.exit(1)
