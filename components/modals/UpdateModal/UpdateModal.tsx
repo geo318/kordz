@@ -32,7 +32,7 @@ export function UpdateModal({
                 className='text-red-500 hover:underline cursor-pointer text-right pt-5 text-sm font-medium'
                 onClick={toggleDeleteDialog}
               >
-                Delete image?
+                Delete?
               </div>
             </div>
             <div

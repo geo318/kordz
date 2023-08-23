@@ -10,3 +10,6 @@ export const postDefaultValues = {
 }
 
 export const protectedRoutes = ['api/*', 'admin'] as const
+
+export const staticPath = 'public/static' as const
+export const imagePaths = ['/images', '/blur'] as const

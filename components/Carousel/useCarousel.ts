@@ -10,6 +10,7 @@ export const useCarousel = ({ musicList }: Props) => {
   const [music, setMusic] = useState<MusicApi>([])
   const { FlashMessage, handleFlashMessage } = useFlashMessage()
   const [index, setIndex] = useState(0)
+
   const { base64Image } = useBlurBase64(music?.[index]?.thumbnail)
 
   useEffect(() => {

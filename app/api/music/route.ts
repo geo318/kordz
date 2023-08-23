@@ -1,5 +1,5 @@
 import { Music } from '@/types'
-import { getFormValues, writeFile } from '@/utils'
+import { getFormValues, getImage, writeFile } from '@/utils'
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
@@ -23,7 +23,6 @@ export const POST = async (req: Request) => {
 
   try {
     const { path } = await writeFile(file)
-
     await prisma.music.create({
       data: {
         ...mapped,
