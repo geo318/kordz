@@ -40,15 +40,30 @@ export default function Home() {
         <Events eventsPromise={eventList()} />
       </section>
       <address className='leading-6 text-sm not-italic text-black text-center md:my-36 mb-20 mt-36'>
-        <h4 className='font-bold'>Management:</h4>
-        <div className='font-medium'>
-          <a>koka@stocktonrecords.com</a>
+        <div className='flex flex-col gap-10'>
+          <div>
+            <h4 className='font-bold'>General Management:</h4>
+            <div className='font-medium'>
+              <a>Koka Gogokhia - koka@stocktonrecords.com</a>
+            </div>
+            <a href='mailto:koka@stocktonrecords.com'>
+              <Button className='mt-4 w-48 bg-black text-white hover:bg-white hover:text-black transition-all'>
+                Contact
+              </Button>
+            </a>
+          </div>
+          <div>
+            <h4 className='font-bold'>Classical Music Projects:</h4>
+            <div className='font-medium'>
+              <a>Anna Haefliger - anna@haefligerproduction.com</a>
+            </div>
+            <a href='mailto:anna@haefligerproduction.com'>
+              <Button className='mt-4 w-48 bg-black text-white hover:bg-white hover:text-black transition-all'>
+                Contact
+              </Button>
+            </a>
+          </div>
         </div>
-        <Link href='mailto:koka@stocktonrecords.com'>
-          <Button className='mt-4 w-48 bg-black text-white hover:bg-white hover:text-black transition-all'>
-            Contact
-          </Button>
-        </Link>
       </address>
       <footer>
         <p className='p-6 text-black font-semibold text-sm'>
