@@ -37,3 +37,4 @@ next-env.d.ts
 /public/static
 /express/node_modules
 /express/uploads
+/express/build
