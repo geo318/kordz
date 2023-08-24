@@ -13,6 +13,7 @@ export const ListItem = ({ e }: { e: EventApi[number] }) => {
       className='event text-center flex flex-col gap-4 items-center transition-all duration-300 delay-100'
       key={e.id}
       ref={ref}
+      title={e.url ? '' : 'Tickets not available yet'}
     >
       <h2 className='text-[2rem] font-bold uppercase'>{e.date}</h2>
       <div className='w-full max-w-sm text-2xl leading-normal tracking-wide '>
