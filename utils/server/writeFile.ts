@@ -25,5 +25,6 @@ export const writeFile = async (file: Blob) => {
 
   sharpBuffer.resize(20, 20, { fit: 'cover' }).toFile(`${publicDir}${blurPath}`)
 
-  return { path: filePath }
+  const path = filePath.split(/\//).pop()
+  return { path: `${imagePaths[0]}/${path}` }
 }

@@ -1,5 +1,5 @@
-import { Music } from '@/types'
-import { getFormValues, getImage, writeFile } from '@/utils'
+import { Music, MusicPartial } from '@/types'
+import { getFormValues, writeFile } from '@/utils'
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
@@ -17,7 +17,7 @@ export const GET = async () => {
 
 export const POST = async (req: Request) => {
   const formData = await req.formData()
-  const [mapped, file] = getFormValues<Music>(formData)
+  const [mapped, file] = getFormValues<Music, MusicPartial>(formData)
 
   if (!file) return new Response('file not uploaded')
 

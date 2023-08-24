@@ -13,11 +13,11 @@ export const generateFileName = (fileName: string) => {
 }
 
 export const getImage = (path: string) => {
-  return `${process.env.NEXT_PUBLIC_URL}${path}`
+  return `${process.env.NEXT_PUBLIC_IMAGE_URL}${path}`
 }
 
 export const getBlurImage = (path: string) => {
   if (!path) return
   const slug = path.split(/\//).pop()
-  return `/static/blur/${slug}`
+  return `${process.env.NEXT_PUBLIC_IMAGE_URL}/blur/${slug}`
 }

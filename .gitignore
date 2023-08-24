@@ -35,4 +35,5 @@ yarn-error.log*
 next-env.d.ts
 /prisma/database
 /public/static
-
+/express/node_modules
+/express/uploads

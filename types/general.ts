@@ -6,8 +6,12 @@ import {
 } from '@/schema'
 import { z } from 'zod'
 
-const musicType = musicSchema()
+const musicTypePartial = musicSchema()
+const musicType = musicSchema({ partial: false })
+
 export type Music = z.infer<typeof musicType>
+
+export type MusicPartial = z.infer<typeof musicTypePartial>
 
 export type MusicApi = z.infer<typeof musicSchemaApi>
 

@@ -39,7 +39,7 @@ export default function Home() {
         <Carousel musicList={musicList()} />
       </section>
 
-      <section>{/* <Events eventsPromise={eventList()} /> */}</section>
+      <section><Events eventsPromise={eventList()} /></section>
       <address className='leading-6 text-sm not-italic text-black text-center md:my-36 mb-20 mt-36'>
         <h4 className='font-bold'>Management:</h4>
         <div className='font-medium'>
