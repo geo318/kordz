@@ -5,7 +5,7 @@ const nextConfig = {
     serverActionsBodySizeLimit: '5mb',
   },
   images: {
-    domains: [process.env.NEXT_PUBLIC_URL, '*', 'localhost'],
+    domains: [process.env.NEXT_PUBLIC_URL, '*'],
     remotePatterns: [
       {
         protocol: process.env.NEXT_PUBLIC_PROTOCOL,
@@ -14,5 +14,5 @@ const nextConfig = {
     ],
   },
 }
-
+//pexels-joan-costa-12024680-(1)-20230822t205720861z.jpg
 module.exports = nextConfig
