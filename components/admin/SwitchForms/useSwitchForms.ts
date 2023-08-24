@@ -1,7 +1,13 @@
+import { useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 
 export const useSwitchForms = () => {
-  const [activeForm, setActiveForm] = useState<'music' | 'event'>('music')
+  const params = useSearchParams()
+  const activeFrom = params.get('form') as 'event' | 'music'
+
+  const [activeForm, setActiveForm] = useState<'music' | 'event'>(
+    activeFrom || 'music'
+  )
 
   const toggleForm = (form: typeof activeForm) => {
     return () => {

@@ -1,7 +1,8 @@
 import { musicSchemaApi } from '@/schema'
-import { useEffect, useState } from 'react'
+import { use, useEffect, useState } from 'react'
 import { MusicApi } from '@/types'
 import { useFlashMessage } from '@/components'
+import { useRouter } from 'next/navigation'
 
 export const useMusicList = (musicListPromise: Promise<MusicApi>) => {
   const [musicList, setMusicList] = useState<MusicApi>([])
@@ -11,6 +12,7 @@ export const useMusicList = (musicListPromise: Promise<MusicApi>) => {
   )
   const [isModalOpen, setIsModalOpen] = useState(false)
   const { FlashMessage, handleFlashMessage } = useFlashMessage()
+  const router = useRouter()
 
   useEffect(() => {
     setIsLoading(true)
@@ -27,6 +29,10 @@ export const useMusicList = (musicListPromise: Promise<MusicApi>) => {
     })()
   }, [musicListPromise, handleFlashMessage])
 
+  const addNew = () => {
+    router.push('/admin?form=music')
+  }
+
   return {
     musicList,
     isLoading,
@@ -35,5 +41,6 @@ export const useMusicList = (musicListPromise: Promise<MusicApi>) => {
     isModalOpen,
     setIsModalOpen,
     FlashMessage,
+    addNew,
   }
 }
