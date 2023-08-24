@@ -20,7 +20,7 @@ export const ListItem = ({ e }: { e: EventApi[number] }) => {
         <p>{e.location}</p>
         <p>{e.description}</p>
       </div>
-      <Link href={e.url}>
+      <Link href={e.url} target='_blank'>
         <Button className='w-32 border border-app-blue hover:ring-blue-100 hover:ring-2 '>
           tickets
         </Button>
