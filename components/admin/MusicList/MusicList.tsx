@@ -19,6 +19,7 @@ export const MusicList: React.FC<{ musicListPromise: Promise<MusicApi> }> = ({
     isModalOpen,
     setIsModalOpen,
     FlashMessage,
+    addNew,
   } = useMusicList(musicListPromise)
 
   return (
@@ -31,7 +32,9 @@ export const MusicList: React.FC<{ musicListPromise: Promise<MusicApi> }> = ({
       />
       <div className='grid grid-cols-12 gap-5'>
         {isLoading ? (
-          <Spinner />
+          <div className='fixed inset-0 flex items-center justify-center'>
+            <Spinner />
+          </div>
         ) : (
           musicList.map((music) => (
             <div
@@ -74,6 +77,12 @@ export const MusicList: React.FC<{ musicListPromise: Promise<MusicApi> }> = ({
             </div>
           ))
         )}
+        <div
+          className='flex min-h-[12rem] items-center justify-center flex-col max-w-sm rounded-md overflow-hidden shadow-sm border border-zinc-200 md:col-span-3 col-span-6 cursor-pointer hover:shadow-md'
+          onClick={addNew}
+        >
+          ➕
+        </div>
       </div>
     </main>
   )

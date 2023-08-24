@@ -2,6 +2,7 @@ import { eventSchemaApi } from '@/schema'
 import { useEffect, useState } from 'react'
 import { EventApi } from '@/types'
 import { useFlashMessage } from '@/components'
+import { useRouter } from 'next/navigation'
 
 export const useEventList = (eventListPromise: Promise<EventApi>) => {
   const [eventList, setEventList] = useState<EventApi>([])
@@ -10,7 +11,7 @@ export const useEventList = (eventListPromise: Promise<EventApi>) => {
   const [activeEvent, setActiveEvent] = useState<EventApi[number]>(
     {} as EventApi[number]
   )
-
+  const router = useRouter()
   const { FlashMessage, handleFlashMessage } = useFlashMessage()
 
   useEffect(() => {
@@ -28,6 +29,10 @@ export const useEventList = (eventListPromise: Promise<EventApi>) => {
     })()
   }, [eventListPromise, handleFlashMessage])
 
+  const addNew = () => {
+    router.push('/admin?form=event')
+  }
+
   return {
     eventList,
     isLoading,
@@ -36,5 +41,6 @@ export const useEventList = (eventListPromise: Promise<EventApi>) => {
     FlashMessage,
     isModalOpen,
     setIsModalOpen,
+    addNew,
   }
 }

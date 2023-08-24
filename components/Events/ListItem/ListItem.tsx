@@ -1,7 +1,6 @@
 'use client'
 
 import { Button } from '@/components'
-import { dateFormatter } from '../helper'
 import Link from 'next/link'
 import { EventApi } from '@/types'
 import { useObserver } from '@/hooks'
@@ -20,11 +19,13 @@ export const ListItem = ({ e }: { e: EventApi[number] }) => {
         <p>{e.location}</p>
         <p>{e.description}</p>
       </div>
-      <Link href={e.url} target='_blank'>
-        <Button className='w-32 border border-app-blue hover:ring-blue-100 hover:ring-2 '>
-          tickets
-        </Button>
-      </Link>
+      {e.url && (
+        <Link href={e.url} target='_blank'>
+          <Button className='w-32 border border-app-blue hover:ring-blue-100 hover:ring-2 '>
+            tickets
+          </Button>
+        </Link>
+      )}
     </li>
   )
 }
