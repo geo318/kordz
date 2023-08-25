@@ -4,7 +4,7 @@ import { imgSchema } from './shared'
 export const musicSchema = ({ partial = false } = {}) =>
   z.object({
     title: z.string(),
-    thumbnail: partial ? z.union([imgSchema, z.undefined()]) : imgSchema,
+    thumbnail: partial ? z.any().or(imgSchema) : imgSchema,
     url: z.string().url('link should start with https://'),
   })
 
