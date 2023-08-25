@@ -18,5 +18,5 @@ const nextConfig = {
     ],
   },
 }
-//pexels-joan-costa-12024680-(1)-20230822t205720861z.jpg
+
 module.exports = nextConfig
