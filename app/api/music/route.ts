@@ -1,6 +1,8 @@
 import { Music, MusicPartial } from '@/types'
 import { getFormValues, writeFile } from '@/utils'
 import { PrismaClient } from '@prisma/client'
+import { staticPath } from '@/config'
+import fs from 'fs'
 
 const prisma = new PrismaClient()
 
@@ -72,6 +74,20 @@ export const DELETE = async (req: Request) => {
   const id = searchParams.get('id')
 
   try {
+    const url = await prisma.music.findUnique({
+      where: {
+        id: Number(id),
+      },
+    })
+    let pathName: string | undefined
+
+    if (url) {
+      pathName = `${process.cwd()}/${staticPath}${url.thumbnail}`
+      fs.unlink(pathName, (err) => {
+        if (err) console.error(err)
+      })
+    }
+    
     await prisma.music.delete({
       where: {
         id: Number(id),
