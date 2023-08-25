@@ -20,6 +20,7 @@ export function Carousel(props: Props) {
     handleTouchMove,
     handleTouchStart,
     base64Image,
+    musicList,
   } = useCarousel(props)
 
   return (
@@ -66,7 +67,7 @@ export function Carousel(props: Props) {
             )}
           </div>
         )}
-        {!isMobile && (
+        {!isMobile && musicList.length > 1 && (
           <>
             <Arrow
               onClick={prev}

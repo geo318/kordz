@@ -54,6 +54,7 @@ export const useCarousel = ({ musicList }: Props) => {
     isLoading,
     music: music[index],
     base64Image,
+    musicList: music,
     next,
     prev,
   }
