@@ -21,6 +21,7 @@ export function Carousel(props: Props) {
     handleTouchStart,
     base64Image,
     musicList,
+    setIndex,
   } = useCarousel(props)
 
   return (
@@ -56,7 +57,7 @@ export function Carousel(props: Props) {
                 }}
               />
             )}
-            {!isMobile && (
+            {!isMobile ? (
               <div className='flex opacity-0 group-hover/image:opacity-100 transition-opacity duration-300 justify-center items-center absolute inset-0 bg-black bg-opacity-50'>
                 <Link href={music.url} target='_blank'>
                   <Button className='listen relative w-32 hover:bg-black hover:text-white cursor-pointer transition-all'>
@@ -64,21 +65,40 @@ export function Carousel(props: Props) {
                   </Button>
                 </Link>
               </div>
+            ) : (
+              <Link
+                href={music.url}
+                target='_black'
+                className='absolute inset-0'
+              />
             )}
           </div>
         )}
-        {!isMobile && musicList.length > 1 && (
-          <>
-            <Arrow
-              onClick={prev}
-              className='hidden group-hover:block group-hover/image:block cursor-pointer absolute top-1/2 -translate-y-1/2 -ml-16'
-            />
-            <Arrow
-              onClick={next}
-              className='hidden group-hover:block group-hover/image:block cursor-pointer absolute top-1/2 right-0 -translate-y-1/2 -mr-16 rotate-180'
-            />
-          </>
-        )}
+        {musicList.length > 1 &&
+          (!isMobile ? (
+            <>
+              <Arrow
+                onClick={prev}
+                className='hidden group-hover:block group-hover/image:block cursor-pointer absolute top-1/2 -translate-y-1/2 -ml-16'
+              />
+              <Arrow
+                onClick={next}
+                className='hidden group-hover:block group-hover/image:block cursor-pointer absolute top-1/2 right-0 -translate-y-1/2 -mr-16 rotate-180'
+              />
+            </>
+          ) : (
+            <div className='flex gap-3 py-5 justify-center'>
+              {musicList.map((e, i) => (
+                <div
+                  key={e.id}
+                  className={`w-3 h-3 rounded-full bg-slate-100 ${
+                    e.id === music.id ? '' : 'opacity-40'
+                  }`}
+                  onClick={() => setIndex(i)}
+                />
+              ))}
+            </div>
+          ))}
       </div>
     </div>
   )
