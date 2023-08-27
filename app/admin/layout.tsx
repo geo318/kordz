@@ -10,7 +10,7 @@ export default function RootLayout({
 }) {
   return (
     <>
-      <Link href='/' className='flex justify-center py-5 w-full bg-app-blue'>
+      <Link href='/' className='flex justify-center items-center py-5 w-full bg-app-blue'>
         <Image src={logo} alt='logo' width={80} />
         <SignOut />
       </Link>

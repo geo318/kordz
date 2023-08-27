@@ -1,8 +1,16 @@
 import Link from 'next/link'
 import { Apple, Facebook, Instagram, SoundCloud, Spotify, Youtube } from '..'
+import { twMerge } from 'tailwind-merge'
 
-export const Social = () => (
-  <div className='flex gap-6 mt-6 items-center justify-center md:relative md:bg-transparent fixed inset-x-0 bottom-0 p-5 md:p-0 bg-blue-600 bg-opacity-90'>
+export const Social = ({ mobile = false }) => (
+  <div
+    className={twMerge(
+      'gap-6 items-center justify-center',
+      mobile
+        ? 'md:hidden w-full flex md:relative md:bg-transparent sticky inset-x-0 bottom-0 p-5 md:p-0 bg-blue-600 bg-opacity-90'
+        : 'hidden mt-6 md:flex'
+    )}
+  >
     <Link
       className='hover:opacity-80'
       target='_blank'
