@@ -1,6 +1,6 @@
 # Next.js RSC with Express, Tailwind CSS, Prisma, and more!
 
-![Next.js RSC Starter](/path/to/your/banner/image.png)
+![Next.js RSC](https://miro.medium.com/v2/resize:fit:700/0*M2HXYaFMhZMtTfNK.png)
 
 This is a full-stack web app that leverages the power of React Server Components (RSC) to create fast and dynamic user interfaces. App implements basic cruds with file upload. It utilizes a range of technologies to peek into new way of doing reactive app with Nextjs.
 
