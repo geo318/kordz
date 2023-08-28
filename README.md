@@ -68,7 +68,7 @@ Open your browser and visit http://localhost:3333 to see the app in action!
 The structure of the project is organized as follows:
 
 ```
-nextjs-rsc-starter/
+kordz/
 ├── .gitignore
 ├── .env
 ├── .env.local
