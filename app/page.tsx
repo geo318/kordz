@@ -5,7 +5,7 @@ import {
   Social,
   Header,
 } from '@/components'
-import { logo } from '@/public'
+import { background, logo, base64bg } from '@/public'
 import { useAdmin } from '@/hooks'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
@@ -25,6 +25,13 @@ export default function Home() {
 
   return (
     <>
+      <Image
+        src={background}
+        alt='background theme'
+        className='fixed inset-0 object-cover -z-10 min-w-full min-h-full transition-all duration-300 ease-in-out'
+        blurDataURL={base64bg}
+        placeholder='blur'
+      />
       <main className='flex min-h-screen flex-col items-center md:px-24 px-5'>
         <Header>
           <div className='flex items-center flex-col w-full p-8'>
@@ -33,7 +40,7 @@ export default function Home() {
           </div>
         </Header>
 
-        <div className='flex flex-col-reverse md:flex-col md:gap-0 gap-10'>
+        <div className='flex flex-col-reverse md:flex-col md:gap-0 gap-10 w-full'>
           <section className='mt-10 md:mb-14 w-full md:h-[32rem] aspect-square relative'>
             <Carousel musicList={musicList()} />
           </section>
