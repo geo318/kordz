@@ -25,20 +25,24 @@ export default function Home() {
 
   return (
     <>
-      <main className='flex min-h-screen flex-col items-center md:px-24 px-5 bg-app-blue'>
+      <main className='flex min-h-screen flex-col items-center md:px-24 px-5'>
         <Header>
           <div className='flex items-center flex-col w-full p-8'>
             <Image src={logo} alt='logo Kordz' width={170} priority />
             <Social />
           </div>
         </Header>
-        <section className='md:mt-10 mb-14 w-full md:h-[32rem] aspect-square relative'>
-          <Carousel musicList={musicList()} />
-        </section>
 
-        <section>
-          <Events eventsPromise={eventList()} />
-        </section>
+        <div className='flex flex-col-reverse md:flex-col md:gap-0 gap-10'>
+          <section className='mt-10 md:mb-14 w-full md:h-[32rem] aspect-square relative'>
+            <Carousel musicList={musicList()} />
+          </section>
+
+          <section className='mt-10'>
+            <Events eventsPromise={eventList()} />
+          </section>
+        </div>
+
         <address className='leading-6 text-sm not-italic text-black text-center md:my-36 mb-20 mt-36'>
           <div className='flex flex-col gap-10'>
             <div>
