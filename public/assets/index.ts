@@ -1,7 +1,8 @@
 import logo from './logo.png'
-import background from './background.webp'
+import desktopBackground from './background-desktop.webp'
+import mobileBackground from './background-mobile.webp'
 
 const base64bg =
   'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAEGBwT/xAAmEAACAgAEBAcAAAAAAAAAAAABAgADBAUGERIhImETFSNxcoGR/8QAFgEBAQEAAAAAAAAAAAAAAAAABgAD/8QAHBEAAQQDAQAAAAAAAAAAAAAAAAECAwUVQlJR/9oADAMBAAIRAxEAPwCfIcMLdluvK9zOx8pwVNa8Kszd2mgPoywN0lB7EyU0TeW24l2+4wWzauwDx8vBQEyvCsu5r5/MxNPr0Y4UBnXeJllG+miVkvBfKwPEPIfkKfViIZGBLnqiIkR//9k='
 
-export { logo, background, base64bg }
+export { logo, base64bg, desktopBackground, mobileBackground }

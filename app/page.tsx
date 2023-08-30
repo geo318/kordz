@@ -5,7 +5,7 @@ import {
   Social,
   Header,
 } from '@/components'
-import { background, logo, base64bg } from '@/public'
+import { mobileBackground, desktopBackground, logo, base64bg } from '@/public'
 import { useAdmin } from '@/hooks'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
@@ -26,11 +26,20 @@ export default function Home() {
   return (
     <>
       <Image
-        src={background}
+        src={mobileBackground}
         alt='background theme'
-        className='fixed inset-0 object-cover -z-10 min-w-full min-h-full transition-all duration-300 ease-in-out'
+        className='fixed md:hidden inset-0 object-cover -z-10 min-w-full min-h-full transition-all duration-300 ease-in-out'
         blurDataURL={base64bg}
         placeholder='blur'
+        quality={100}
+      />
+      <Image
+        src={desktopBackground}
+        alt='background theme'
+        className='fixed hidden md:block inset-0 object-cover -z-10 min-w-full min-h-full transition-all duration-300 ease-in-out'
+        blurDataURL={base64bg}
+        placeholder='blur'
+        quality={85}
       />
       <main className='flex min-h-screen flex-col items-center md:px-24 px-5'>
         <Header>
