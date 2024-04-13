@@ -11,9 +11,11 @@ export function Events(props: { eventsPromise: Promise<EventApi> }) {
       <FlashMessage />
 
       <ul className='flex flex-col gap-24'>
-        {events?.map((e) => (
-          <ListItem e={e} key={e.id} />
-        ))}
+        {events
+          ?.sort((a, b) => a.order - b.order)
+          .map((e) => (
+            <ListItem e={e} key={e.id} />
+          ))}
       </ul>
     </>
   )
