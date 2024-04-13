@@ -22,12 +22,15 @@ export const useFlashMessage = (
     [errorMessage, successMessage]
   )
 
-  const FlashMessage = () => (
-    <Flash
-      flashInfo={flashMessage!}
-      isActive={isFlashActive}
-      setIsActive={setIsFlashActive}
-    />
+  const FlashMessage = useCallback(
+    () => (
+      <Flash
+        flashInfo={flashMessage!}
+        isActive={isFlashActive}
+        setIsActive={setIsFlashActive}
+      />
+    ),
+    [flashMessage, isFlashActive]
   )
   return { FlashMessage, handleFlashMessage }
 }

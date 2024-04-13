@@ -1,5 +1,5 @@
 import { eventSchemaApi } from '@/schema'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { EventApi } from '@/types'
 import { useFlashMessage } from '@/components'
 import { useRouter } from 'next/navigation'
@@ -15,6 +15,7 @@ export const useEventList = (eventListPromise: Promise<EventApi>) => {
   )
   const router = useRouter()
   const { FlashMessage, handleFlashMessage } = useFlashMessage()
+  const [isDragged, setIsDragged] = useState(false)
 
   useEffect(() => {
     setIsLoading(true)
@@ -29,27 +30,32 @@ export const useEventList = (eventListPromise: Promise<EventApi>) => {
 
       setIsLoading(false)
     })()
-  }, [eventListPromise, handleFlashMessage])
+  }, [handleFlashMessage])
 
-  const addNew = () => {
+  const addNew = useCallback(() => {
     router.push('/admin?form=event')
-  }
+  }, [router])
 
-  const handleReorder = async (data: EventApi) => {
+  const handleReorder = useCallback(async (data: EventApi) => {
+    setEventList(data)
+  }, [])
+
+  const handleSubmit = useCallback(async () => {
+    if (!isDragged) return
     setIsLoading(true)
     try {
       await fetch('/api/events', {
         method: 'PATCH',
-        body: JSON.stringify(data),
+        body: JSON.stringify(eventList),
       })
       revalidateEventData()
-      setEventList(data)
     } catch (e) {
       handleFlashMessage(!!'error')
     } finally {
       setIsLoading(false)
+      setIsDragged(false)
     }
-  }
+  }, [eventList, isDragged, handleFlashMessage])
 
   return {
     eventList,
@@ -61,7 +67,8 @@ export const useEventList = (eventListPromise: Promise<EventApi>) => {
     setIsModalOpen,
     addNew,
     Reorder,
-    setEventList,
     handleReorder,
+    handleSubmit,
+    setIsDragged,
   }
 }

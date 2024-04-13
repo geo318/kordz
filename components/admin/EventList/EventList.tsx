@@ -19,6 +19,8 @@ export const EventList: React.FC<{ eventListPromise: Promise<EventApi> }> = ({
     addNew,
     Reorder,
     handleReorder,
+    handleSubmit,
+    setIsDragged,
   } = useEventList(eventListPromise)
 
   return (
@@ -38,7 +40,7 @@ export const EventList: React.FC<{ eventListPromise: Promise<EventApi> }> = ({
           axis='x'
         >
           {isLoading ? (
-            <div className='fixed inset-0 flex items-center justify-center'>
+            <div className='fixed inset-0 bg-white flex items-center justify-center'>
               <Spinner />
             </div>
           ) : (
@@ -47,6 +49,8 @@ export const EventList: React.FC<{ eventListPromise: Promise<EventApi> }> = ({
                 key={event.id}
                 value={event}
                 className='min-w-[15rem] bg-white'
+                onMouseUp={handleSubmit}
+                onDragEnd={() => setIsDragged(true)}
               >
                 <div className='flex flex-col max-w-sm p-4 rounded overflow-hidden shadow-sm border border-zinc-200 md:col-span-3 col-span-6'>
                   <p>⏳ {event.date}</p>
