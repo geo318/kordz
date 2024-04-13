@@ -22,6 +22,7 @@ export const eventSchemaApi = z.array(
   eventSchema.extend({
     id: z.coerce.number(),
     date: z.string(),
+    order: z.coerce.number(),
     createdAt: z.coerce.date(),
     updatedAt: z.coerce.date(),
   })
