@@ -3,7 +3,8 @@
 import { FormWrapper, Input } from '@/components'
 import { musicSchema as schema } from '@/schema'
 import { Props } from './types'
-import { Music } from '@/types/general'
+import { type Music } from '@/types'
+import { imgSchemaOptional } from '@/schema/shared'
 
 export function UploadMusicForm({
   handleSubmit,
@@ -13,7 +14,7 @@ export function UploadMusicForm({
 }: Props<Music> & { edit?: boolean }): JSX.Element {
   return (
     <FormWrapper
-      schema={edit ? schema({ partial: true }) : schema()}
+      schema={schema({ partial: edit })}
       defaultValues={defaultValues}
       onSubmit={handleSubmit}
       className='bg-white'

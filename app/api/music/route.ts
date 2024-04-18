@@ -1,4 +1,4 @@
-import { Music, MusicPartial } from '@/types'
+import { Music, MusicApi, MusicPartial } from '@/types'
 import { getFormValues, writeFile } from '@/utils'
 import { PrismaClient } from '@prisma/client'
 import { staticPath } from '@/config'
@@ -57,7 +57,10 @@ export const PATCH = async (req: Request) => {
       where: {
         id: Number(id),
       },
-      data: { ...mapped, ...(pathName ? { thumbnail: pathName } : {}) },
+      data: {
+        ...mapped,
+        ...(pathName ? { thumbnail: pathName } : {}),
+      } as unknown as MusicApi,
     })
   } catch (e) {
     console.log(e)
@@ -87,7 +90,7 @@ export const DELETE = async (req: Request) => {
         if (err) console.error(err)
       })
     }
-    
+
     await prisma.music.delete({
       where: {
         id: Number(id),

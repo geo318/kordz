@@ -1,10 +1,10 @@
 import z from 'zod'
-import { imgSchema } from './shared'
+import { imgSchema, imgSchemaOptional } from './shared'
 
 export const musicSchema = ({ partial = false } = {}) =>
   z.object({
     title: z.string(),
-    thumbnail: partial ? z.string().max(0).or(imgSchema) : imgSchema,
+    thumbnail: partial ? imgSchemaOptional.or(z.string()) : imgSchema,
     url: z.string().url('link should start with https://'),
   })
 

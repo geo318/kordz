@@ -7,7 +7,7 @@ import {
 import { z } from 'zod'
 
 const musicTypePartial = musicSchema()
-const musicType = musicSchema({ partial: false })
+const musicType = musicSchema({ partial: true })
 
 export type Music = z.infer<typeof musicType>
 
