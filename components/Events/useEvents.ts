@@ -1,4 +1,3 @@
-import { eventSchemaApi } from '@/schema'
 import { EventApi } from '@/types'
 import { useEffect, useState } from 'react'
 import { useFlashMessage } from '..'
@@ -15,8 +14,7 @@ export const useEvents = ({
     ;(async () => {
       try {
         const eventData = await eventsPromise
-        const parsedEventsData = eventSchemaApi.parse(eventData)
-        setEvents(parsedEventsData)
+        setEvents(eventData)
       } catch (e) {
         handleFlashMessage(!!'error')
       }
