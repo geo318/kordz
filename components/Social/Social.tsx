@@ -42,7 +42,7 @@ export const Social = ({ mobile = false }) => (
     <Link
       className='hover:opacity-80'
       target='_blank'
-      href='https://www.youtube.com/@Akord18'
+      href='https://www.youtube.com/@kordzzzz'
     >
       <Youtube />
     </Link>
